@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%-include ("../header/template.ejs") %>
+</head>
+<body>
+	<%- include ("../header/header.ejs") %>
+	<!-- section PROMOTED start -->
+	<div class=" layout_padding promoted_sectipon">
+		<div class="container">
+			<h1 class="promoted_text">검색 <span style="border-bottom: 5px solid #4bc714;">결과</span></h1>
+			 <div class="images_main">
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">공고명</th>
+							<th scope="col">Last</th>
+							<th scope="col">Handle</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<th scope="row">3</th>
+							<td>Larry</td>
+							<td>the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+			<!--	<div class="row">
+					<div class="col-sm-6 col-md-6 col-lg-1">
+						공고명
+					</div>
+					<div class="col-sm-6 col-md-6 col-lg-3">
+						공고기관
+					</div>
+					<div class="col-sm-6 col-md-6 col-lg-3">
+						수요기관
+					</div>
+					<div class="col-sm-6 col-md-6 col-lg-3">
+						입찰방법
+					</div>
+					<div class="col-sm-6 col-md-6 col-lg-2">
+						마감일시
+					</div>
+				</div>-->
+			</div> 
+			<% let list = JSON.parse(data); 
+			let num = 0;
+			for (num=0; num < list.length; num++){ %>
+			<div class="images_main">
+				<div class="row">
+					<div class="col-sm-6 col-md-6 col-lg-1">
+						<!-- row --><a href="<%= list[num][0].url; %>"><%= list[num][0].name; %></a>
+					</div>
+					<div class="col-sm-6 col-md-6 col-lg-2">
+						<!-- row --><%= list[num][0].req; %>
+					</div>
+					<div class="col-sm-6 col-md-6 col-lg-3">
+						<!-- row --><%= list[num][0].res; %>
+					</div>
+					<div class="col-sm-6 col-md-6 col-lg-3">
+						<!-- row --><%= list[num][0].contract; %>
+					</div>
+					<div class="col-sm-6 col-md-6 col-lg-3">
+						<!-- row --><%= list[num][0].time; %>
+					</div>
+				</div>
+			</div>
+			<% } %>
+		</div>
+	</div>
+	<!-- section PROMOTED end -->
+	<%- include ("../footer/footer.ejs") %>
+</body>
+</html>

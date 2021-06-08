@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include ("../header/template.ejs") %>
+</head>
+<body>
+	<%- include ("../header/header.ejs") %>
+  <div class=" layout_padding promoted_sectipon">
+		<div class="container">
+			<h1 class="promoted_text">요구사항 <span style="border-bottom: 5px solid #4bc714;">게시판</span></h1>
+			<div class="images_main">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">제목</th>
+              <th scope="col">작성자</th>
+              <th scope="col">작성일</th>
+              <th scope="col">답변</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let rowNum=0; rowNum < boardRowNum; rowNum++){  %>
+              <% console.log(rowNum); %>
+            <tr>
+              <th scope="row"><%= boardData[rowNum].req_idx %></th>
+              <td><%= boardData[rowNum].req_title %></td>
+              <td><%= boardData[rowNum].req_user %></td>
+              <td><%= boardData[rowNum].req_ins_date %></td>
+              <td><%= boardData[rowNum].answer_yn == 'y' ? '답변완료' : '답변대기' %></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row" style="float: right;">
+        <a href="/main/requests/form"> <button type="button" class="btn btn-dark">게시글 작성</button> </a>
+      </div>  
+      <div class="row"> 
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+	<%- include ("../footer/footer.ejs") %>
+</body>
+</html>
