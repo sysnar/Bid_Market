@@ -13,7 +13,8 @@ async function getRequestBoardRowNum(page, pageSize){
     const dbconn = await dbpool.getConnection(async conn => conn);
     
     try{
-      const [rows] = await dbconn.query("SELECT count(*) from request_board LIMIT ?, ?;",[Number(page), Number(pageSize)]);
+      // const [rows] = await dbconn.query("SELECT count(*) from request_board LIMIT ?, ?;",[Number(page), Number(pageSize)]);
+      const [rows] = await dbconn.query("SELECT count(*) from (select * from request_board LIMIT ?, ?) as cnt;",[Number(page), Number(pageSize)]);
       dbconn.release();
       return rows[0]['count(*)'];
     }
